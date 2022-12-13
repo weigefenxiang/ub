@@ -1,0 +1,47 @@
+name: AutoClash
+on:
+  push:
+    paths:
+      - '.github/**'
+      #- '!docker/**'
+  #schedule:
+    #- cron: '* */6 * * *'
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    env:
+      VER: "0.3"
+      DH: "${{ secrets.DOCKERHUB_USERNAME }}/flexgetqb"
+      TZ: Asia/Shanghai
+    #timeout-minutes: 10
+    # sudo ufw disable
+    steps:
+    - uses: actions/checkout@v3
+    - name: 构建镜像
+      run: |
+        PWD=`pwd`
+        docker build -t image1 docker/.
+    -
+      name: Login to DockerHub
+      uses: docker/login-action@v1 
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    - 
+      name: Push
+      run: |
+          docker tag image1 $DH:$VER
+          docker push $DH:$VER
+          docker tag image1 $DH
+          docker push $DH
+      #-e TZ=Asia/Shanghai -p 56881:56881 -p 56881:56881/udp -p 55555:55555 -p 55555:55555/udp \
+    - name: Run Docker
+      run: |
+        docker run -itd --privileged --restart=always --name ub \
+        image1
+        df -h
+    - name: START
+      run: |
+        docker exec ub  ls
+####
+       
