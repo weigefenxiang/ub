@@ -10,8 +10,8 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     env:
-      VER: "0.3"
-      DH: "${{ secrets.DOCKERHUB_USERNAME }}/flexgetqb"
+      VER: "0.1"
+      DH: "${{ secrets.DOCKERHUB_USERNAME }}/ub"
       TZ: Asia/Shanghai
     #timeout-minutes: 10
     # sudo ufw disable
