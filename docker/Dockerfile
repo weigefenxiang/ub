@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /root/
 
-ARG Requirement='python3.8 python3-pip wget unzip net-tools curl vim' 
+ARG Requirement='python3.8 python3-pip unzip vim wget net-tools curl iputils-ping traceroute' 
 # ARG Delment='wget unzip net-tools curl vim'
 
 RUN	apt update && apt install -y $Requirement \
