@@ -8,6 +8,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /root/
 
+ADD .vimrc /root/.vimrc
+
 ARG Requirement='python3.8 python3-pip unzip vim wget net-tools curl iputils-ping traceroute' 
 # ARG Delment='wget unzip net-tools curl vim'
 
