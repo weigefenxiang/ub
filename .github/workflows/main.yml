@@ -10,7 +10,7 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     env:
-      VER: "0.2"
+      VER: "0.3"
       DH: "${{ secrets.DOCKERHUB_USERNAME }}/ub"
       TZ: Asia/Shanghai
     #timeout-minutes: 10
@@ -37,8 +37,7 @@ jobs:
       #-e TZ=Asia/Shanghai -p 56881:56881 -p 56881:56881/udp -p 55555:55555 -p 55555:55555/udp \
     - name: Run Docker
       run: |
-        docker run -itd --privileged --restart=always --name ub \
-        image1
+        docker run -itd --privileged --restart=always --name ub image1
         df -h
     - name: START
       run: |
