@@ -22,6 +22,6 @@ RUN 	rm -rf /var/lib/apt/lists/* && apt clean
 RUN     sed -i s@/archive.ubuntu.com/@/mirrors.tuna.tsinghua.edu.cn/@g /etc/apt/sources.list \
 	&& sed -i s@/security.ubuntu.com/@/mirrors.tuna.tsinghua.edu.cn/@g /etc/apt/sources.list
 
-RUN	echo "alias myip=\"echo 'Direct ip' ;curl -s cip.cc | sed '4,100d' ; echo ''; echo 'Proxy ip' ; curl -s icanhazip.com; echo ''; echo 'ipv6 addr' ; curl -s 6.ipw.cn ; echo ''\"" >> /etc/profile
+RUN	echo "alias myip=\"echo 'Direct ip' ;curl -s cip.cc | sed '4,100d' ; echo ''; echo 'Proxy ip' ; curl -s icanhazip.com; echo ''; echo 'ipv6 addr' ; curl -s 6.ipw.cn ; echo ''\"" >> /etc/bash.bashrc
 
 RUN apt update
