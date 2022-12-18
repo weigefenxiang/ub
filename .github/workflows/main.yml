@@ -43,5 +43,6 @@ jobs:
     - name: START
       run: |
         docker exec ub  ls
+        docker exec ub  myip
 #######
        
